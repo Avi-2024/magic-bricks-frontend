@@ -3,6 +3,7 @@ import "./Auth.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+// Register component for user registration
 const Register = () => {
   const [formData, setFormData] = useState({
     username: "",
