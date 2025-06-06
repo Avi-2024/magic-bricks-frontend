@@ -1,0 +1,95 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #d32f2f; 
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-logo a {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff; 
+  text-decoration: none;
+}
+
+.navbar-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-links li {
+  margin: 0 15px;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: #fff; 
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.navbar-links a:hover {
+  color: #ffcccb; 
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+}
+
+.login-btn,
+.post-btn {
+  border: none;
+  padding: 8px 15px;
+  margin-left: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.login-btn {
+  background-color: #fff;
+  color: #d32f2f;
+  border: 1px solid #fff;
+}
+
+.login-btn:hover {
+  background-color: #ffcccb;
+  color: #d32f2f;
+}
+
+.post-btn {
+  background-color: #ffcccb;
+  color: #d32f2f;
+}
+
+.post-btn:hover {
+  background-color: #fff;
+  color: #d32f2f;
+}
+
+.logout-btn {
+  background-color: #ff4d4d; /* Bright red background */
+  color: white; /* White text */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px 20px; /* Add padding */
+  font-size: 16px; /* Increase font size */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+}
+
+.logout-btn:hover {
+  background-color: #e60000; /* Darker red on hover */
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+.logout-btn:active {
+  background-color: #cc0000; /* Even darker red when clicked */
+  transform: scale(0.95); /* Slightly shrink on click */
+}

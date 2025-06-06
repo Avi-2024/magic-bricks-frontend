@@ -1,0 +1,49 @@
+.update-property-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.update-property-container h1 {
+  text-align: center;
+  color: #d32f2f;
+  margin-bottom: 20px;
+}
+
+.update-property-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.update-property-form label {
+  font-size: 1rem;
+  color: #333;
+}
+
+.update-property-form input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.update-button {
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #4caf50;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.update-button:hover {
+  background-color: #388e3c;
+}
