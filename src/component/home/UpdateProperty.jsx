@@ -22,7 +22,7 @@ const UpdateProperty = () => {
     const fetchProperty = async () => {
       try {
         const token = localStorage.getItem("authToken");
-        const response = await axios.get(`http://localhost:5000/api/property/${id}`, {
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/property/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -62,7 +62,7 @@ const UpdateProperty = () => {
     }
 
     await axios.put(
-      `http://localhost:5000/api/property/${id}`,
+      `${process.env.REACT_APP_API_URL}/api/property/${id}`,
       formData,
         {
           headers: {

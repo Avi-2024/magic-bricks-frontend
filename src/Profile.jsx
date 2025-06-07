@@ -17,7 +17,7 @@ const Profile = () => {
     const fetchUserProfile = async () => {
       try {
         const token = localStorage.getItem("authToken");
-        const userResponse = await axios.get("http://localhost:5000/api/profile", {
+        const userResponse = await axios.get(`${process.env.REACT_APP_API_URL}/api/profile`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -39,7 +39,7 @@ const Profile = () => {
     const fetchUserProperties = async () => {
       try {
         const token = localStorage.getItem("authToken");
-        const propertyResponse = await axios.get("http://localhost:5000/api/property/user-properties", {
+        const propertyResponse = await axios.get(`${process.env.REACT_APP_API_URL}/api/property/user-properties`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -62,7 +62,7 @@ const Profile = () => {
   const handleDelete = async (propertyId) => {
     try {
       const token = localStorage.getItem("authToken");
-      await axios.delete(`http://localhost:5000/api/property/${propertyId}`, {
+      await axios.delete(`${process.env.REACT_APP_API_URL}/api/property/${propertyId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -99,7 +99,7 @@ const Profile = () => {
               <div key={property._id} className="property-card">
                 {property.image && (
                   <img
-                    src={`http://localhost:5000/${property.image}`}
+                    src={`${process.env.REACT_APP_API_URL}/${property.image}`}
                     alt={property.title}
                     className="property-image"
                   />
