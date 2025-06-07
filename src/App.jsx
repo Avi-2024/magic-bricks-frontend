@@ -3,8 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./component/Navbar";
 import UploadProperty from "./component/home/UploadProperty";
 import PropertyList from "./component/home/PropertyList";
-import Register from "./component/auth/register";
-import Login from "./component/auth/login";
+import Register from "./component/auth/Register";
+import Login from "./component/auth/Login";
 import PrivateRoute from "./component/auth/PrivateRoute";
 import Profile from "../src/Profile"
 import UpdateProperty from "./component/home/UpdateProperty";
