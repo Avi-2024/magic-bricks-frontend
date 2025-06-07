@@ -26,8 +26,12 @@ const Login = () => {
     alert("Login successful!");
     navigate("/")
   } catch (error) {
-    console.error("Login error:", error);
-    alert("Failed to login.");
+    if ( error.response.data.msg) {
+      alert(error.response.data.msg); 
+    } else {
+      console.error("Login error:", error);
+      alert("Failed to Login. Please try again.");
+    }
   }
 };
 
