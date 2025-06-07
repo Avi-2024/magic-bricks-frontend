@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./PropertyList.css";
+import "./propertyList.css";
 
 const PropertyList = () => {
   const [properties, setProperties] = useState([]);
