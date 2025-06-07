@@ -18,6 +18,7 @@ const Register = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+  // handleSubmit function to send registration data to the server
   const handleSubmit = async (e) => {
   e.preventDefault();
   try {
