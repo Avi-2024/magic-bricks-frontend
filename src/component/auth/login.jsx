@@ -19,7 +19,7 @@ const Login = () => {
  const handleSubmit = async (e) => {
   e.preventDefault();
   try {
-    const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/login`, formData);
+    const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/login`, formData);
     console.log("Login successful:", response.data);
     localStorage.setItem("authToken", response.data.token);
 

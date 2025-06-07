@@ -2,94 +2,92 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #d32f2f; 
   padding: 10px 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #d32f2f;
+  color: white;
 }
 
 .navbar-logo a {
+  text-decoration: none;
+  color: white;
   font-size: 1.5rem;
   font-weight: bold;
-  color: #fff; 
-  text-decoration: none;
 }
 
 .navbar-links {
   display: flex;
   list-style: none;
-  margin: 0;
-  padding: 0;
+  gap: 20px;
 }
 
-.navbar-links li {
-  margin: 0 15px;
-}
-
-.navbar-links a {
+.navbar-links li a {
   text-decoration: none;
-  color: #fff; 
+  color: white;
   font-size: 1rem;
-  transition: color 0.3s;
-}
-
-.navbar-links a:hover {
-  color: #ffcccb; 
 }
 
 .navbar-actions {
   display: flex;
-  align-items: center;
+  gap: 10px;
 }
 
-.login-btn,
-.post-btn {
+.login-btn, .post-btn, .logout-btn {
+  text-decoration: none;
+  color: white;
+  background-color: #f44336;
   border: none;
-  padding: 8px 15px;
-  margin-left: 10px;
-  font-size: 1rem;
+  padding: 5px 10px;
+  border-radius: 5px;
   cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.3s, color 0.3s;
 }
 
-.login-btn {
-  background-color: #fff;
-  color: #d32f2f;
-  border: 1px solid #fff;
+.login-btn:hover, .post-btn:hover, .logout-btn:hover {
+  background-color: #c62828;
 }
 
-.login-btn:hover {
-  background-color: #ffcccb;
-  color: #d32f2f;
+/* Responsive Styles */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
 }
 
-.post-btn {
-  background-color: #ffcccb;
-  color: #d32f2f;
+.navbar-links {
+  transition: max-height 0.3s ease-in-out;
 }
 
-.post-btn:hover {
-  background-color: #fff;
-  color: #d32f2f;
+.navbar-links.open {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  background-color: #d32f2f;
+  padding: 10px 0;
+  max-height: 300px;
+  overflow: hidden;
 }
 
-.logout-btn {
-  background-color: #ff4d4d; /* Bright red background */
-  color: white; /* White text */
-  border: none; /* Remove border */
-  border-radius: 5px; /* Rounded corners */
-  padding: 10px 20px; /* Add padding */
-  font-size: 16px; /* Increase font size */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+.navbar-links li {
+  text-align: center;
+  padding: 10px 0;
 }
 
-.logout-btn:hover {
-  background-color: #e60000; /* Darker red on hover */
-  transform: scale(1.05); /* Slightly enlarge on hover */
-}
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none;
+    max-height: 0;
+  }
 
-.logout-btn:active {
-  background-color: #cc0000; /* Even darker red when clicked */
-  transform: scale(0.95); /* Slightly shrink on click */
+  .menu-toggle {
+    display: block;
+  }
+
+  .navbar-actions {
+    display: none;
+  }
 }

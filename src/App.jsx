@@ -8,7 +8,9 @@ import Login from "./component/auth/login";
 import PrivateRoute from "./component/auth/PrivateRoute";
 import Profile from "../src/Profile"
 import UpdateProperty from "./component/home/UpdateProperty";
+
 function App() {
+
   return (
     <BrowserRouter>
       <Navbar />

@@ -13,6 +13,9 @@ const Register = () => {
   });
   const navigate = useNavigate();
 
+  const apiUrl = import.meta.env.VITE_API_URL;
+  console.log("API URL:", apiUrl);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -22,7 +25,9 @@ const Register = () => {
   const handleSubmit = async (e) => {
   e.preventDefault();
   try {
-    const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/register`, formData);
+    console.log(`${import.meta.env.VITE_API_URL}/api/register`)
+    const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/register`, formData);
+    console.log("Working")
     console.log("Registration successful:", response.data);
     alert("Registration successful!");
     navigate("/login")

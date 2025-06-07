@@ -8,7 +8,7 @@ const PropertyList = () => {
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}api/property`);
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/property`);
         setProperties(response.data.property);
       } catch (error) {
         console.error("Error fetching properties:", error);
@@ -22,7 +22,7 @@ const PropertyList = () => {
     try {
       const token = localStorage.getItem("authToken"); 
       const response = await axios.post(
-        `${process.env.REACT_APP_API_URL}/api/property/buy`,
+        `${import.meta.env.VITE_API_URL}/api/property/buy`,
         { propertyId },
         {
           headers: {
@@ -49,7 +49,7 @@ const PropertyList = () => {
           <div key={property._id} className="property-card">
             {property.image && (
               <img
-                src={`${process.env.REACT_APP_API_URL}/${property.image}`}
+                src={`${import.meta.env.VITE_API_URL}/${property.image}`}
                 alt={property.title}
                 className="property-image"
               />
