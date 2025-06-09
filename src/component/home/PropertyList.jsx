@@ -14,10 +14,10 @@ const PropertyList = () => {
         console.error("Error fetching properties:", error);
       }
     };
-
+  
     fetchProperties();
   }, []);
-
+  //
   const handleBuy = async (propertyId) => {
     try {
       const token = localStorage.getItem("authToken"); 
