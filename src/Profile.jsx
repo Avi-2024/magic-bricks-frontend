@@ -9,6 +9,7 @@ const Profile = () => {
   const [userProperties, setUserProperties] = useState([]);
   const [loadingProfile, setLoadingProfile] = useState(true);
   const [loadingProperties, setLoadingProperties] = useState(true);
+  const [purchaseRequests , setPurchaseRequests] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
@@ -23,7 +24,6 @@ const Profile = () => {
           },
         });
         setUserInfo(userResponse.data.user);
-        console.log(userResponse.data.user)
         setLoadingProfile(false);
       } catch (err) {
         setError("Failed to fetch user profile.");
@@ -46,7 +46,7 @@ const Profile = () => {
         });
         setUserProperties(propertyResponse.data.properties);
         setLoadingProperties(false);
-      } catch (err) {
+      } catch (error) {
         setError("Failed to fetch user properties.");
         setLoadingProperties(false);
       }
@@ -56,6 +56,8 @@ const Profile = () => {
   }, []);
 
   const handleUpdate = (propertyId) => {
+   { console.log("propertyId",propertyId)}
+
     navigate(`/update-property/${propertyId}`);
   };
 
@@ -72,10 +74,48 @@ const Profile = () => {
         prevProperties.filter((property) => property._id !== propertyId)
       );
     } catch (error) {
+      if(error.msg){
+        alert(error.msg);
+      }
+      else{
       console.error("Error deleting property:", error);
       alert("Failed to delete property.");
+      }
     }
   };
+  const handleDeletePurchaseRequests =async (propertyId) => {
+    try {
+      const token = localStorage.getItem("authToken");
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/${propertyId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+       setUserInfo((prevUserInfo) => ({
+      ...prevUserInfo,
+      purchaseRequests: prevUserInfo.purchaseRequests.filter(
+        (property) => property.propertyId !== propertyId
+      ),
+    }));
+      alert("Property deleted successfully!");
+    } catch (error) {
+      if(error.msg){
+        alert(error.msg);
+      }
+      else{
+      console.error("Error deleting property:", error);
+      alert("Failed to delete property.");
+      }
+    }
+  };
+  const handlepurchaseRequests = ()=>{
+    if(purchaseRequests === false){
+      setPurchaseRequests(true);
+    }
+    else{
+      setPurchaseRequests(false);
+    }
+  }
 
   if (loadingProfile) return <p>Loading profile...</p>;
   // if (error) return <p>{error}</p>;
@@ -87,9 +127,53 @@ const Profile = () => {
         <p><strong>Name:</strong> {userInfo.username}</p>
         <p><strong>Email:</strong> {userInfo.email}</p>
         <p><strong>Phone:</strong> {userInfo.phone}</p>
+        <p><strong>Purchase Requests:</strong> {userInfo.purchaseRequests.length}  <button onClick={handlepurchaseRequests}>See Property</button></p>
+      {purchaseRequests && (
+        <>
+        <h2>You Requested for this properties</h2>
+        <div className="property-grid">
+          
+          {userInfo.purchaseRequests.length > 0 ? (
+            userInfo.purchaseRequests.map((property) => (
+              <div key={property._id} className="property-card">
+                {property.image && (
+                  <img
+                    src={`${import.meta.env.VITE_API_URL}/${property.image}`}
+                    alt={property.title}
+                    className="property-image"
+                  />
+                )}
+                <div className="property-details">
+                  <h2 className="property-title">{property.title}</h2>
+                  <p className="property-address"><strong>Address:</strong> {property.address}</p>
+                  <p className="property-landmark"><strong>Landmark:</strong> {property.landmark}</p>
+                  <p className="property-pincode"><strong>Pincode:</strong> {property.pincode}</p>
+                  <p className="property-pincode"><strong>Price:</strong> {property.price}</p>
+                  <p className="property-mobile"><strong>Contact:</strong> {property.mobile}</p>
+                  <div className="property-actions">
+                    <button
+                      className="delete-button"
+                      onClick={() => {handleDeletePurchaseRequests(property.propertyId);              console.log("property",property)
+}}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </div>
+              </div>
+              
+            ))
+            
+          ) : (
+            <p>No properties found.</p>
+          )}
+        </div>
+        </>
+      )}
+        
       </div>
 
-      <h2>Your Properties</h2>
+      <h2>Your Uploaded Properties for sell</h2>
       {loadingProperties ? (
         <p>Loading properties...</p>
       ) : (
