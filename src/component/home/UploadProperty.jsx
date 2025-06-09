@@ -55,6 +55,16 @@ const UploadProperty = () => {
       });
       console.log("Property uploaded:", response.data);
       alert("Property uploaded successfully!");
+      setFormData({
+        userId: "",
+        title: "",
+        address: "",
+        landmark: "",
+        pincode: "",
+        mobile: "",
+        price:"",
+        image: null,
+      });
     } catch (error) {
       console.error("Error uploading property:", error);
       alert("Failed to upload property.");
